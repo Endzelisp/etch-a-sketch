@@ -1,3 +1,8 @@
+:root {
+  --rows-and-columns: 4;
+  --blue: #0000ff;
+}
+
 *,
 *::before,
 *::after {
@@ -6,3 +11,15 @@
   padding: 0;
 }
 
+.container {
+  max-width: 80vw;
+  max-height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(var(--rows-and-columns), 1fr);
+}
+
+.container div {
+  height: calc(80vh / var(--rows-and-columns));
+  background-color: aqua;
+  border: 1px solid var(--blue);
+}
