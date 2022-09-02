@@ -11,15 +11,21 @@
   padding: 0;
 }
 
-.container {
-  max-width: 80vw;
-  max-height: 80vh;
+.cells-container {
+  width: 80vh;
+  height: 80vh;
   display: grid;
   grid-template-columns: repeat(var(--rows-and-columns), 1fr);
 }
 
-.container div {
+.cells-container div {
   height: calc(80vh / var(--rows-and-columns));
-  background-color: aqua;
-  border: 1px solid var(--blue);
+}
+
+.cells-bg-color {
+  background-color: aquamarine;
+}
+
+.blue {
+  background-color: blue;
 }
