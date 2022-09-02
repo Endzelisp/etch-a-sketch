@@ -18,5 +18,13 @@ let newEl;
   
 }
 
+
 createElem('div', numOfCells)
 
+const cells = containerEl.childNodes;
+
+cells.forEach(item => {
+  item.addEventListener('mouseover', ()=> {
+    item.classList.toggle('blue')
+  })
+})
