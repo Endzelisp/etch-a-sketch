@@ -4,7 +4,6 @@ const rowInputEl = document.querySelector('#row')
 const setSqBtn = document.querySelector('#setSq')
 const gridSizeEl = document.querySelector(':root');
 
-
 function setGrid () {
   let columns = colInputEl.value;
   let rows = rowInputEl.value;
@@ -49,10 +48,9 @@ function turnColorDark (color) {
   return `rgb(${colorArray[0]}, ${colorArray[1]}, ${colorArray[2]})`
 };
 
-
 setSqBtn.addEventListener('click', () => {
   let sqSize = setGrid()
-  let numOfCells = sqSize[0] *   sqSize[1];
+  let numOfCells = sqSize[0] * sqSize[1];
   containerEl.innerHTML = '';
   createElem('div', numOfCells)
 
