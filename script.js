@@ -1,4 +1,4 @@
-const containerEl = document.querySelector('.cells-container');
+const containerEl = document.querySelector('.cell-grid');
 
 let gridSizeEl = document.querySelector(':root');
 
@@ -18,6 +18,12 @@ let newEl;
   
 }
 
+function randomColor () {
+  let red = Math.floor((Math.random() * 255) + 1);
+  let green = Math.floor((Math.random() * 255) + 1);
+  let blue = Math.floor((Math.random() * 255) + 1);
+  return `rgb(${red}, ${green}, ${blue})`
+}
 
 createElem('div', numOfCells)
 
@@ -25,6 +31,9 @@ const cells = containerEl.childNodes;
 
 cells.forEach(item => {
   item.addEventListener('mouseover', ()=> {
-    item.classList.toggle('blue')
+    let actualColor = item.style.getPropertyValue('background-color');
+     if (actualColor === '') {
+      item.style.setProperty('background-color', randomColor())
+    }
   })
 })

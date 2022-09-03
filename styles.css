@@ -11,21 +11,27 @@
   padding: 0;
 }
 
-.cells-container {
-  width: 80vh;
-  height: 80vh;
+.main-container {
+  display: grid;
+  grid-template-columns: 20vw 80vw;
+  height: 100vh;
+  background-color: lightgoldenrodyellow;
+}
+
+.controls{
+  background-color: lightgray;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightseagreen;
+}
+
+.cell-grid {
   display: grid;
   grid-template-columns: repeat(var(--rows-and-columns), 1fr);
-}
-
-.cells-container div {
-  height: calc(80vh / var(--rows-and-columns));
-}
-
-.cells-bg-color {
-  background-color: aquamarine;
-}
-
-.blue {
-  background-color: blue;
+  height: 80vh;
+  width: 80vh;
 }
