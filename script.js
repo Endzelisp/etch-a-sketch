@@ -1,16 +1,10 @@
 const containerEl = document.querySelector('.cell-grid');
 const gridSizeEl = document.querySelector(':root');
-const colInputEl = document.querySelector('#col');
-const rowInputEl = document.querySelector('#row');
-const setSqBtn = document.querySelector('#setSq');
 const rainbowBtn = document.querySelector('#rainbow');
+const boardSizeInputEl = document.querySelector('#board-size')
 
-function setGrid () {
-  let columns = colInputEl.value;
-  let rows = rowInputEl.value;
-  gridSizeEl.style.setProperty('--col', columns)
-  gridSizeEl.style.setProperty('--row', rows)
-  return [columns, rows]
+function setGrid (size) {
+  gridSizeEl.style.setProperty('--size', size);
 }
 
 function createElem (elem, numOfElem) {
@@ -19,6 +13,15 @@ let newEl;
   newEl = document.createElement(elem)
   containerEl.appendChild(newEl)
   }
+}
+
+function drawBoard () {
+  const boardSize = boardSizeInputEl.value;
+  setGrid(boardSize);
+  let numOfCells = (boardSize ** 2);
+  console.log(numOfCells);
+  containerEl.innerHTML = '';
+  createElem('div', numOfCells);
 }
 
 function randomColor () {
@@ -49,18 +52,7 @@ function turnColorDark (color) {
   return `rgb(${colorArray[0]}, ${colorArray[1]}, ${colorArray[2]})`
 };
 
-function drawBoard () {
-  let sqSize = setGrid()
-  let numOfCells = sqSize[0] * sqSize[1];
-  containerEl.innerHTML = '';
-  createElem('div', numOfCells)
-}
-
 let cells;
-
-setSqBtn.addEventListener('pointerdown', () => {
-  drawBoard()
-})
 
 rainbowBtn.addEventListener('pointerdown', () => {
   cells = containerEl.childNodes;
@@ -75,4 +67,10 @@ rainbowBtn.addEventListener('pointerdown', () => {
       }
     })
   })
+})
+
+drawBoard()
+
+boardSizeInputEl.addEventListener('change', () => {
+  drawBoard()
 })

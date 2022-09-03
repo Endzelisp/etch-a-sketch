@@ -1,6 +1,5 @@
 :root {
-  --col: 0;
-  --row: 0;
+  --size: 2;
 }
 
 *,
@@ -30,9 +29,16 @@
 
 .cell-grid {
   display: grid;
-  grid-template-columns: repeat(var(--col), 1fr);
-  grid-template-rows: repeat(var(--row), 1fr);
+  grid-template-columns: repeat(var(--size), 1fr);
   height: 80vh;
   width: 80vh;
   border: 1px solid rgb(85, 85, 85);
+}
+
+.cell-grid div {
+  height: calc(80vh / var(--size));
+}
+
+#board-size {
+  max-width: 90%;
 }
