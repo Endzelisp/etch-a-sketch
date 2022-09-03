@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed&family=Indie+Flower&display=swap');
+
 :root {
   --size: 2;
+  --board-height: 75vh;
+  font-family: 'Fira Sans Condensed', sans-serif;
 }
 
 *,
@@ -14,29 +18,43 @@
   display: grid;
   grid-template-columns: 20vw 80vw;
   height: 100vh;
-  background-color: lightgoldenrodyellow;
+  background: rgb(131,58,180);
+  background: linear-gradient(310deg, rgba(131,58,180,1) 0%, rgba(253,29,29,0.47) 50%, rgba(252,176,69,1) 100%);
 }
 
 .controls{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20vh;
   background-color: lightgray;
+}
+
+.controls input {
+  margin: .5rem 0;
 }
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.container h1 {
+  font-family: 'Indie Flower', cursive;;
 }
 
 .cell-grid {
   display: grid;
   grid-template-columns: repeat(var(--size), 1fr);
-  height: 80vh;
-  width: 80vh;
-  border: 1px solid rgb(85, 85, 85);
+  height: var(--board-height);
+  width: var(--board-height);
+  background-color: rgba(236, 236, 236, 0.733);
 }
 
 .cell-grid div {
-  height: calc(80vh / var(--size));
+  height: calc(var(--board-height) / var(--size));
 }
 
 #board-size {
