@@ -55,10 +55,12 @@ function drawBoard () {
   createElem('div', numOfCells)
 }
 
+let cells;
+
 setSqBtn.addEventListener('click', () => {
   drawBoard()
 
-  const cells = containerEl.childNodes;
+  cells = containerEl.childNodes;
 
   cells.forEach(item => {
     item.addEventListener('mouseover', ()=> {
