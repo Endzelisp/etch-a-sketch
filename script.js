@@ -57,15 +57,15 @@ function turnColorDark (color) {
 let cells;
 
 rainbowBtn.addEventListener('pointerdown', () => {
+  rainbowBtn.classList.toggle('active')
+})
+
+addEventListener('pointerover', () => {
   cells = containerEl.childNodes;
   cells.forEach(item => {
     item.addEventListener('pointerover', ()=> {
-      let actualColor = item.style.getPropertyValue('background-color');
-      if (actualColor === '') {
+      if (rainbowBtn.classList.value === 'active') {
         item.style.setProperty('background-color', randomColor())
-      } else if (actualColor !== ''){
-          let darker = turnColorDark(actualColor);
-          item.style.setProperty('background-color', darker)
       }
     })
   })

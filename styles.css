@@ -16,7 +16,7 @@
 
 .main-container {
   display: grid;
-  grid-template-columns: 20vw 80vw;
+  grid-template-columns: 100px auto;
   height: 100vh;
   background: rgb(131,58,180);
   background: linear-gradient(310deg, rgba(131,58,180,1) 0%, rgba(253,29,29,0.47) 50%, rgba(252,176,69,1) 100%);
@@ -30,8 +30,13 @@
   background-color: lightgray;
 }
 
-.controls input {
-  margin: .5rem 0;
+#rainbow {
+  border: 2px solid rgb(107, 107, 107);
+  border-radius: 2px;
+  padding: 2px 5px;
+}
+.active {
+  border: 3px solid rgb(49, 49, 49) !important;
 }
 
 .container {
