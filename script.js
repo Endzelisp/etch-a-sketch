@@ -65,15 +65,15 @@ setSqBtn.addEventListener('click', () => {
 rainbowBtn.addEventListener('click', () => {
   cells = containerEl.childNodes;
   cells.forEach(item => {
-  item.addEventListener('mouseover', ()=> {
-    let actualColor = item.style.getPropertyValue('background-color');
-    if (actualColor === '') {
-      item.style.setProperty('background-color', randomColor())
-    } else if (actualColor !== ''){
-      let darker = turnColorDark(actualColor);
-      console.log(darker)
-      item.style.setProperty('background-color', darker)
-    }
+    item.addEventListener('mouseover', ()=> {
+      let actualColor = item.style.getPropertyValue('background-color');
+      if (actualColor === '') {
+        item.style.setProperty('background-color', randomColor())
+      } else if (actualColor !== ''){
+        let darker = turnColorDark(actualColor);
+        console.log(darker)
+        item.style.setProperty('background-color', darker)
+      }
+    })
   })
-})
 })
