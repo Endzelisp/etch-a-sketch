@@ -12,10 +12,15 @@
 <body>
   <div class="main-container">
     <div class="controls">
-      <p>Board Size</p>
-      <input type="range" min="2" max="10" step="2" id="board-size" value="8">
-      <p id="board-size-value"></p>
-      <button id="rainbow">Rainbow</button>
+      <div class="controls__size">
+        <p>Board Size</p>
+        <input type="range" min="2" max="20" step="2" id="board-size" value="8">
+        <p id="board-size-value"></p>
+      </div>
+      <div class="buttons-container">
+        <button id="rainbow">Rainbow</button>
+        <button type="reset">reset</button>
+      </div>
     </div>
     <div class="container">
       <h1>Etch-a-Sketch</h1>

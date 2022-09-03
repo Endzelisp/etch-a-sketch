@@ -16,7 +16,7 @@
 
 .main-container {
   display: grid;
-  grid-template-columns: 100px auto;
+  grid-template-columns: 140px auto;
   height: 100vh;
   background: rgb(131,58,180);
   background: linear-gradient(310deg, rgba(131,58,180,1) 0%, rgba(253,29,29,0.47) 50%, rgba(252,176,69,1) 100%);
@@ -26,8 +26,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20vh;
+  justify-content: center;
+  gap: 40px;
   background-color: lightgray;
+}
+
+.controls .controls__size {
+  width: 100%;
+  text-align: center;
+}
+
+.controls .buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls .buttons-container * {
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 #rainbow {
@@ -36,7 +54,8 @@
   padding: 2px 5px;
 }
 .active {
-  border: 3px solid rgb(49, 49, 49) !important;
+  border: 2px solid rgb(0, 3, 185) !important;
+  color: rgb(0, 3, 185);
 }
 
 .container {
