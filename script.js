@@ -1,8 +1,9 @@
 const containerEl = document.querySelector('.cell-grid');
+const gridSizeEl = document.querySelector(':root');
 const colInputEl = document.querySelector('#col')
 const rowInputEl = document.querySelector('#row')
 const setSqBtn = document.querySelector('#setSq')
-const gridSizeEl = document.querySelector(':root');
+const rainbowBtn = document.querySelector('#rainbow')
 
 function setGrid () {
   let columns = colInputEl.value;
@@ -59,19 +60,20 @@ let cells;
 
 setSqBtn.addEventListener('click', () => {
   drawBoard()
+})
 
+rainbowBtn.addEventListener('click', () => {
   cells = containerEl.childNodes;
-
   cells.forEach(item => {
-    item.addEventListener('mouseover', ()=> {
-      let actualColor = item.style.getPropertyValue('background-color');
-      if (actualColor === '') {
-        item.style.setProperty('background-color', randomColor())
-      } else if (actualColor !== ''){
-        let darker = turnColorDark(actualColor);
-        console.log(darker)
-        item.style.setProperty('background-color', darker)
-      }
-    })
+  item.addEventListener('mouseover', ()=> {
+    let actualColor = item.style.getPropertyValue('background-color');
+    if (actualColor === '') {
+      item.style.setProperty('background-color', randomColor())
+    } else if (actualColor !== ''){
+      let darker = turnColorDark(actualColor);
+      console.log(darker)
+      item.style.setProperty('background-color', darker)
+    }
   })
+})
 })
