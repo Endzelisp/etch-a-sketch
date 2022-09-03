@@ -28,6 +28,28 @@ function randomColor () {
   return `rgb(${red}, ${green}, ${blue})`
 }
 
+function turnColorDark (color) {
+  color = color.slice(4, -1)
+  colorStr = ''
+
+  for (let i = 0; i < color.length; ++i) {
+    if (color[i] === ' ') {
+      continue
+    } else colorStr += color[i]
+  };
+
+  colorArray = colorStr.split(',');
+
+  for (let i = 0; i < 3; ++i) {
+    colorArray[i] = Math.floor(colorArray[i] * 0.9);
+    if (colorArray[i] < 0) {
+      colorArray[i] = 0;
+    }
+  }
+  return `rgb(${colorArray[0]}, ${colorArray[1]}, ${colorArray[2]})`
+};
+
+
 setSqBtn.addEventListener('click', () => {
   let sqSize = setGrid()
   let numOfCells = sqSize[0] *   sqSize[1];
@@ -41,6 +63,10 @@ setSqBtn.addEventListener('click', () => {
       let actualColor = item.style.getPropertyValue('background-color');
       if (actualColor === '') {
         item.style.setProperty('background-color', randomColor())
+      } else if (actualColor !== ''){
+        let darker = turnColorDark(actualColor);
+        console.log(darker)
+        item.style.setProperty('background-color', darker)
       }
     })
   })
