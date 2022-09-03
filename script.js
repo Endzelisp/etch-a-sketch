@@ -2,6 +2,7 @@ const containerEl = document.querySelector('.cell-grid');
 const gridSizeEl = document.querySelector(':root');
 const rainbowBtn = document.querySelector('#rainbow');
 const boardSizeInputEl = document.querySelector('#board-size')
+const boardSizeText = document.querySelector('#board-size-value')
 
 function setGrid (size) {
   gridSizeEl.style.setProperty('--size', size);
@@ -17,6 +18,7 @@ let newEl;
 
 function drawBoard () {
   const boardSize = boardSizeInputEl.value;
+  boardSizeText.textContent = `${boardSize} X ${boardSize}`;
   setGrid(boardSize);
   let numOfCells = (boardSize ** 2);
   console.log(numOfCells);
