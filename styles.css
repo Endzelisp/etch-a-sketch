@@ -1,6 +1,6 @@
 :root {
-  --rows-and-columns: 4;
-  --blue: #0000ff;
+  --col: 0;
+  --row: 0;
 }
 
 *,
@@ -26,12 +26,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: lightseagreen;
 }
 
 .cell-grid {
   display: grid;
-  grid-template-columns: repeat(var(--rows-and-columns), 1fr);
+  grid-template-columns: repeat(var(--col), 1fr);
+  grid-template-rows: repeat(var(--row), 1fr);
   height: 80vh;
   width: 80vh;
+  border: 1px solid rgb(85, 85, 85);
 }

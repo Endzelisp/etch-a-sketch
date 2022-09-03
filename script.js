@@ -1,21 +1,24 @@
 const containerEl = document.querySelector('.cell-grid');
+const colInputEl = document.querySelector('#col')
+const rowInputEl = document.querySelector('#row')
+const setSqBtn = document.querySelector('#setSq')
+const gridSizeEl = document.querySelector(':root');
 
-let gridSizeEl = document.querySelector(':root');
 
-let numOfCells = 100;
-
-let gridSize = Math.sqrt(numOfCells)
-
-gridSizeEl.style.setProperty('--rows-and-columns', gridSize)
+function setGrid () {
+  let columns = colInputEl.value;
+  let rows = rowInputEl.value;
+  gridSizeEl.style.setProperty('--col', columns)
+  gridSizeEl.style.setProperty('--row', rows)
+  return [columns, rows]
+}
 
 function createElem (elem, numOfElem) {
 let newEl;
   for (let i = 0; i < numOfElem; ++i) {
   newEl = document.createElement(elem)
-  newEl.classList.add('cells-bg-color')
   containerEl.appendChild(newEl)
   }
-  
 }
 
 function randomColor () {
@@ -25,15 +28,20 @@ function randomColor () {
   return `rgb(${red}, ${green}, ${blue})`
 }
 
-createElem('div', numOfCells)
+setSqBtn.addEventListener('click', () => {
+  let sqSize = setGrid()
+  let numOfCells = sqSize[0] *   sqSize[1];
+  containerEl.innerHTML = '';
+  createElem('div', numOfCells)
 
-const cells = containerEl.childNodes;
+  const cells = containerEl.childNodes;
 
-cells.forEach(item => {
-  item.addEventListener('mouseover', ()=> {
-    let actualColor = item.style.getPropertyValue('background-color');
-     if (actualColor === '') {
-      item.style.setProperty('background-color', randomColor())
-    }
+  cells.forEach(item => {
+    item.addEventListener('mouseover', ()=> {
+      let actualColor = item.style.getPropertyValue('background-color');
+      if (actualColor === '') {
+        item.style.setProperty('background-color', randomColor())
+      }
+    })
   })
 })
