@@ -4,7 +4,8 @@ const boardSizeInputEl = document.querySelector('#board-size');
 const boardSizeText = document.querySelector('#board-size-value');
 const colorPickerInput = document.querySelector('.color-picker input');
 const rainbowBtn = document.querySelector('#rainbow');
-const pencilBtn = document.querySelector('.color-picker button')
+const pencilBtn = document.querySelector('.color-picker button');
+const eraserBtn = document.querySelector('#eraser')
 const resetBtn = document.querySelector('.buttons-container #reset');
 
 
@@ -25,7 +26,6 @@ function drawBoard () {
   boardSizeText.textContent = `${boardSize} X ${boardSize}`;
   setGrid(boardSize);
   let numOfCells = (boardSize ** 2);
-  console.log(numOfCells);
   containerEl.innerHTML = '';
   createElem('div', numOfCells);
 }
@@ -37,7 +37,16 @@ function randomColor () {
   return `rgb(${red}, ${green}, ${blue})`
 }
 
-function turnColorDark (color) {
+function opacity (color, toggle) {
+// toggle between 0 or 1
+// 1 for darken
+// 0 for lighten
+
+if (toggle !== 0 && toggle !== 1) return
+
+let opacity = (toggle === 1) ? 0.9 : 1.05;
+console.log(`Opacity is ${opacity}`)
+
   color = color.slice(4, -1)
   colorStr = ''
 
@@ -50,7 +59,7 @@ function turnColorDark (color) {
   colorArray = colorStr.split(',');
 
   for (let i = 0; i < 3; ++i) {
-    colorArray[i] = Math.floor(colorArray[i] * 0.9);
+    colorArray[i] = Math.floor(colorArray[i] * opacity);
     if (colorArray[i] < 0) {
       colorArray[i] = 0;
     }
@@ -77,15 +86,26 @@ pencilBtn.addEventListener('pointerdown', () => {
   pencilBtn.classList.toggle('active');
 })
 
+eraserBtn.addEventListener('pointerdown', () => {
+  noActiveBtn()
+  eraserBtn.classList.toggle('active');
+})
+
 addEventListener('pointerover', () => {
   cells = containerEl.childNodes;
   cells.forEach(item => {
-    item.addEventListener('pointerover', ()=> {
+    item.addEventListener('pointerenter', ()=> {
       if (rainbowBtn.classList.value === 'active') {
         item.style.setProperty('background-color', randomColor())
       } else if (pencilBtn.classList.value === 'active') {
-        let color = colorPickerInput.value;
-        item.style.setProperty('background-color', color)
+          let color = colorPickerInput.value;
+          item.style.setProperty('background-color', color)
+      } else if (eraserBtn.classList.value === 'active') {
+          let color = item.style.getPropertyValue('background-color');
+
+          let lighten = opacity(color, 1);
+
+          item.style.setProperty('background-color', lighten)
       }
     })
   })
