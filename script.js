@@ -1,8 +1,9 @@
 const containerEl = document.querySelector('.cell-grid');
 const gridSizeEl = document.querySelector(':root');
-const rainbowBtn = document.querySelector('#rainbow');
 const boardSizeInputEl = document.querySelector('#board-size')
 const boardSizeText = document.querySelector('#board-size-value')
+const rainbowBtn = document.querySelector('#rainbow');
+const resetBtn = document.querySelector('.buttons-container #reset')
 
 function setGrid (size) {
   gridSizeEl.style.setProperty('--size', size);
@@ -76,3 +77,5 @@ drawBoard()
 boardSizeInputEl.addEventListener('change', () => {
   drawBoard()
 })
+
+resetBtn.addEventListener('pointerdown', drawBoard)
