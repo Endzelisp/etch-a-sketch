@@ -48,6 +48,10 @@
   margin-bottom: 15px;
 }
 
+.color-picker {
+  display: flex;
+}
+
 #rainbow {
   border: 2px solid rgb(107, 107, 107);
   border-radius: 2px;

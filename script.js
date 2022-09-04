@@ -1,9 +1,12 @@
 const containerEl = document.querySelector('.cell-grid');
 const gridSizeEl = document.querySelector(':root');
-const boardSizeInputEl = document.querySelector('#board-size')
-const boardSizeText = document.querySelector('#board-size-value')
+const boardSizeInputEl = document.querySelector('#board-size');
+const boardSizeText = document.querySelector('#board-size-value');
+const colorPickerInput = document.querySelector('.color-picker input');
 const rainbowBtn = document.querySelector('#rainbow');
-const resetBtn = document.querySelector('.buttons-container #reset')
+const pencilBtn = document.querySelector('.color-picker button')
+const resetBtn = document.querySelector('.buttons-container #reset');
+
 
 function setGrid (size) {
   gridSizeEl.style.setProperty('--size', size);
@@ -55,10 +58,23 @@ function turnColorDark (color) {
   return `rgb(${colorArray[0]}, ${colorArray[1]}, ${colorArray[2]})`
 };
 
+function noActiveBtn () {
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach(button => {
+    button.classList.remove('active');
+  });
+};
+
 let cells;
 
 rainbowBtn.addEventListener('pointerdown', () => {
+  noActiveBtn()
   rainbowBtn.classList.toggle('active')
+})
+
+pencilBtn.addEventListener('pointerdown', () => {
+  noActiveBtn()
+  pencilBtn.classList.toggle('active');
 })
 
 addEventListener('pointerover', () => {
@@ -67,6 +83,9 @@ addEventListener('pointerover', () => {
     item.addEventListener('pointerover', ()=> {
       if (rainbowBtn.classList.value === 'active') {
         item.style.setProperty('background-color', randomColor())
+      } else if (pencilBtn.classList.value === 'active') {
+        let color = colorPickerInput.value;
+        item.style.setProperty('background-color', color)
       }
     })
   })
@@ -78,4 +97,7 @@ boardSizeInputEl.addEventListener('change', () => {
   drawBoard()
 })
 
-resetBtn.addEventListener('pointerdown', drawBoard)
+resetBtn.addEventListener('pointerdown', () => {
+  drawBoard();
+  noActiveBtn();
+})
